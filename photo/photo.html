@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<title>Photo</title>
+<style>
+html,body{
+	height: 100%;
+}
+body {
+	margin: 20px 20px 0px 20px;
+	padding: 0;
+	background: #444;
+	text-align: center;	/* ↓ 可変サイズのinline-blockには、margin:0 auto;が使えない。 */
+}
+img {
+	max-width: 100%;
+/*	height: 100%;	*/
+	margin: 0;
+	padding: 0;
+	display: block;	/* これがないと余分な枠が付いてしまう。*/
+/*	object-fit: contain; */
+}
+.page-box {
+	width: 100%;
+}
+.box-frame {
+	max-width: 100%;
+/*	height: 100%;	*/
+	marigin: 5px;
+	display: inline-block;
+	padding: 7px;
+	border: 1px solid #ccc;
+	background: #fff;
+	box-shadow: 1px 1px 5px rgba(20,20,20,0.2);
+	border-radius: 4px;
+}
+.vignette {
+	max-width: 100%;
+/*	height: 100%;	*/
+	position: relative;
+}
+.vignette:after {
+	position: absolute;
+	display: block;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.6),
+	inset 0 0 300px rgba(0, 0, 0, 0.4);
+}
+</style>
+</head>
+<body>
+<a href="javascript:history.back()">
+<div class="page-box">
+<div class="box-frame">
+	<div class="vignette">
+		<img id="photo" src="">
+	</div>
+</div>
+</div>
+</a>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script>
+document.getElementById('photo').src = new URLSearchParams(window.location.search).get('photo');
+var photoRatio;
+$(function(){
+	var img = $('#photo');
+	img.bind('load', function(){	// 画像のロードを待ってから処理しないと画像のサイズが0になってしまう。
+		// 画像オリジナルの横幅・高さを得る
+		var photoW = document.getElementById('photo').naturalWidth;
+		var photoH = document.getElementById('photo').naturalHeight;
+		photoRatio = photoH / photoW;
+		photoResize(photoRatio);
+	});
+});
+// ブラウザ・ウインドウのリサイズ
+$(window).on('resize',function(){
+	photoResize(photoRatio);
+});
+function photoResize(photoRatio) {
+	// ブラウザ・ウインドウの横幅・高さを得る
+	var windowW = $(window).width();
+	var windowH = $(window).height();
+	var windowRatio = windowH / windowW;
+	if (photoRatio > windowRatio) {	// ウインドウと画像の縦横比率の比較
+		// 写真の高さをウインドウの高さに合わせる。
+		$('.page-box').outerHeight($(window).height() - 60);
+		$('#photo').height('100%');
+		$('.box-frame').height('100%');
+		$('.vignette').height('100%');
+	} else {
+		$('.page-box').height('auto');
+		$('#photo').height('auto');
+		$('.box-frame').height('auto');
+		$('.vignette').height('auto');
+	}
+}
+document.onkeydown = keyPress;
+function keyPress( e ) {
+	e = e || window.event;
+	if (e.keyCode == 27) {		// ESC ：Exit, Return
+		history.back();
+		return false;
+	}
+	return true;			// その他 (ファンクションキーなどを有効にするため)
+}
+</script>
+</body>
+</html>

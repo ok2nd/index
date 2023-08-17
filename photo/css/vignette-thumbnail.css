@@ -1,0 +1,59 @@
+body {
+	color: #666;
+	background: #f8f8f4;
+	font-family: 'Sawarabi Mincho', Helvetica, Arial, sans-serif;
+	margin: 0 0 60px 20px;
+}
+#gallery {
+	padding: 0;
+	text-align: left;
+}
+h1 {
+	font-weight: normal;
+	text-align: center;
+	font-size: 30px;
+	margin: 16px 0 4px 0;
+	padding: 0;
+}
+.date {
+	font-size: 24px;
+}
+a { text-decoration: none; }
+a:link { color: #0060c0; }
+a:visited { color: #0060c0; }
+a:hover { color: #f43316; }
+a:active { color: #f43316; }
+img {
+	display: block;			/* これがないと余分な枠が付いてしまう。*/
+}
+.box-frame {
+	margin: 4px;
+	width: 340px;
+	height: 340px;
+
+	float: left;			/* 横並び display:inline-block; ではうまくいかない */
+
+	display: flex;			/* flex box */
+	justify-content: center;	/* ブロック内で左右中央揃え */
+	align-items: center;		/* ブロック内で上下中央揃え */
+					/* https://qiita.com/HiromuMasuda0228/items/6a51c2ce24c69c937092 */
+
+	padding: 7px;			/* ↓ 影付きフレーム */
+	border: 1px solid #ccc;
+	background: #fff;
+	box-shadow: 1px 1px 5px rgba(20,20,20,0.2);
+	border-radius: 4px;
+}
+.vignette {
+	position: relative;
+}
+.vignette:after {
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6),
+	inset 0 0 100px rgba(0, 0, 0, 0.4);
+}
