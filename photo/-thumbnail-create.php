@@ -11,9 +11,14 @@ if (!isset($_GET['dir'])) {
 <title>PhotoアルバムHTML作成</title>
 <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
 <link href="css/vignette-thumbnail.css" rel="stylesheet">
+<style>
+.subtitle {
+	font-size: 18px;
+}
+</style>
 </head>
 <body>
-<h1>PhotoアルバムHTML作成　<span class="date">サブタイトル</span></h1>
+<h1>PhotoアルバムHTML作成　<span class="subtitle">サブタイトル</span></h1>
 <!--
 	http://localhost/github/index/photo/-thumbnail-create.php?dir=art1
 -->
