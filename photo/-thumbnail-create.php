@@ -21,6 +21,7 @@ if (!isset($_GET['dir'])) {
 <h1>PhotoアルバムHTML作成　<span class="subtitle">サブタイトル</span></h1>
 <!--
 	http://localhost/github/index/photo/-thumbnail-create.php?dir=art1
+	http://localhost/github/index/photo/-thumbnail-create.php?dir=kobe3
 -->
 <div id="gallery">
 <?php
@@ -45,7 +46,7 @@ if (!isset($_GET['dir'])) {
 ?>
 </div>
 <div style="clear:both;padding:10px 0 0 0;text-align:center;">
-<a href="https://2ndart.hatenablog.com/" target="_blank">晴歩雨描</a>
+<a href="https://2ndart.hatenablog.com/archive" target="_blank">晴歩雨描</a>
 </div>
 </body>
 </html>
