@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex,nofollow,noarchive" />
 <meta name="author" content="ok.2nd">
 <meta name="description" content="スマホ&PC用ポータル">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
@@ -39,11 +38,7 @@ input#search_str {
 	padding: 1px 0;
 	margin-right: 2px;
 	font-size: 20px;
-	width: calc(100% - 64px);
-	max-width: 500px;
-}
-select, input, textarea, button { 
-	vertical-align: middle;	/* input 要素の縦ずれを防ぐ */
+	width: 260px;
 }
 a.suggest_onoff {
 	text-decoration: none;
@@ -325,7 +320,29 @@ function Link() {
 </head>
 <body>
 <div id="search_button_box">
-<input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);"></td><td><input type="button" value="Google" onClick="GoogleSch()">
+	<table><tr><td>
+
+<!--
+		<a id="suggest_on" class="suggest_onoff" href="javascript:suggest('off');" style="color:#EACC8F;">●</a><a id="suggest_off" class="suggest_onoff" href="javascript:suggest('on');" style="color:#EACC8F; display:none;">○</a>
+-->
+
+<input type="text" id="search_str" value="" onkeypress="search_enter(event.keyCode);"></td><td><input type="button" value="Google" onClick="GoogleSch()">
+<!--
+		<input type="button" value=" Bing " onClick="Bing()">
+-->
+		</td>
+		</tr>
+	</table>
+<!--
+	<p id="index_search" style="margin: 4px 0 2px 0;">
+
+
+		<input type="button" value="カレンダ" class="btn-blue" onClick="Calendar()">
+		<input type="button" value="時計" class="btn-blue" onClick="Clock()">
+		<input type="button" value="&nbsp;&nbsp;×&nbsp;&nbsp;" class="btn-blue" onClick="Link()">
+
+	</p>
+-->
 </div>
 <div id="date_clock"></div>
 <script language="JavaScript">
@@ -391,10 +408,6 @@ function Link() {
 			<img src="portal-img/tategaki.jpg"><figcaption>縦書き印刷</figcaption>
 		</figure></a>
 
-		<a href="https://openai.com/index/chatgpt/" target="_blank"><figure>
-			<img src="portal-img/ChatGPT.jpg"><figcaption>ChatGPT</figcaption>
-		</figure></a>
-
 		<a href="https://bard.google.com/" target="_blank"><figure>
 			<img src="portal-img/bard.jpg"><figcaption>Bard</figcaption>
 		</figure></a>
@@ -413,17 +426,10 @@ function Link() {
 		<a href="https://www.jma.go.jp/bosai/wdist/#zoom:7/lat:34.777716/lon:135.379028/colordepth:normal/elements:wm" target="_blank"><figure>
 			<img src="portal-img/kishouchou.jpg"><figcaption>気象庁時系列予報</figcaption>
 		</figure></a>
-
+		
+		
 		<a href="https://www.jma.go.jp/bosai/map.html#5/34.976/136.384/&contents=forecast" target="_blank"><figure>
 			<img src="portal-img/tenki-map.jpg"><figcaption>気象庁天気予報</figcaption>
-		</figure></a>
-
-		<a href="https://tenki.jp/radar/map/" target="_blank"><figure>
-			<img src="portal-img/tenki.jp-radar.jpg"><figcaption>雨雲レーダーtenki.jp</figcaption>
-		</figure></a>
-
-		<a href="https://weathernews.jp/onebox/radar/" target="_blank"><figure>
-			<img src="portal-img/weathernews-radar.jpg"><figcaption>雨雲レーダー60時間</figcaption>
 		</figure></a>
 
 		<a href="https://www.jma.go.jp/bosai/risk/" target="_blank"><figure>
@@ -528,7 +534,7 @@ function Link() {
 		<a href="https://ok2nd.github.io/sitemap/camera-know-how.html" target="_blank"><figure>
 			<img src="portal-img/camera-know-how.jpg"><figcaption>写真ノウハウ記事</figcaption>
 		</figure></a>
-		<a href="https://ok2nd.github.io/leaflet/" target="_blank"><figure>
+		<a href="https://ok2nd.github.io/leaflet/-list.html" target="_blank"><figure>
 			<img src="portal-img/leaflet-list.jpg"><figcaption>Leaflet地図 リスト</figcaption>
 		</figure></a>
 	</div>

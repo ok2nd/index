@@ -245,13 +245,18 @@ function GoogleSch() {
 	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
+function GoogleUdm14() {
+	url = 'https://www.google.com/search?udm=14&q=';
+	url += encodeURL(sp2han(document.getElementById('search_str').value));
+	wopen(url);
+}
 function KakakuSch() {
 	url = 'https://kakaku.com/search_results/';
 	url += EscapeSJIS(sp2han(document.getElementById('search_str').value)) + '/';
 	wopen(url);
 }
 function AmazonSch() {
-	url = 'https://www.amazon.co.jp/s/ref=nb_sb_noss?field-keywords=';
+	url = 'https://www.amazon.co.jp/s/ref=nb_sb_noss?emi=AN1VRQENFRJN5&field-keywords=';
 	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
@@ -325,8 +330,16 @@ function Link() {
 </head>
 <body>
 <div id="search_button_box">
-<input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);"></td><td><input type="button" value="Google" onClick="GoogleSch()">
+<input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
+<input type="button" value="Google" onClick="GoogleSch()">
+<input type="button" value="udm=14" onClick="GoogleUdm14()">
+<input type="button" value="Bing" onClick="Bing()">
+<input type="button" value="Amazon直" onClick="AmazonSch()">
+
+
 </div>
+
+<!-- 時計
 <div id="date_clock"></div>
 <script language="JavaScript">
 	var week = ['<span class="clocksunday">日</span>','<span class="clockweekday">月</span>','<span class="clockweekday">火</span>','<span class="clockweekday">水</span>','<span class="clockweekday">木</span>','<span class="clockweekday">金</span>','<span class="clocksaturday">土</span>'];
@@ -347,6 +360,7 @@ function Link() {
 	}
 	clock_2nd();
 </script>
+-->
 <div id="linkbox">
 <div id="linkbox1">
 <!--
