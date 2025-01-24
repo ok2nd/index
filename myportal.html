@@ -44,7 +44,7 @@ input#search_str {
 	margin-right: 2px;
 	font-size: 20px;
 	width: calc(100% - 64px);
-	max-width: 500px;
+	max-width: 620px;
 }
 select, input, textarea, button { 
 	vertical-align: middle;	/* input 要素の縦ずれを防ぐ */
@@ -194,11 +194,11 @@ function search_enter(keyCode) {
 <input type="button" value="Google (udm=14)" class="btn-blue" onClick="GoogleUdm14()">
 -->
 <input type="button" value="Bing" class="btn-blue" onClick="Bing()">
-<input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
 <br>
+<input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
 <input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
 <input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
-<input type="button" value="Amazon (直)" class="btn-orange" onClick="AmazonSch()">
+<input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
 <input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
 <input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
 </div>
@@ -238,7 +238,7 @@ function search_enter(keyCode) {
 	</td></tr>
 </table></div>
 <div class="categorybox"><table>
-	<tr class="category"><td>AI検索</td></tr>
+	<tr class="category"><td>AI 質問</td></tr>
 	<tr class="bookmark"><td>
 		<p><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></p>
 		<p><a href="https://gemini.google.com/app" target="_blank">Gemini</a></p>
@@ -249,16 +249,16 @@ function search_enter(keyCode) {
 <div class="categorybox"><table>
 	<tr class="category"><td>野鳥</td></tr>
 	<tr class="bookmark"><td>
-		<p><a href="https://ok2nd.github.io/birds/" target="_blank">My野鳥図鑑</a>
+		<p class="pickup"><a href="https://ok2nd.github.io/birds/" target="_blank">My野鳥図鑑</a>
 		　<a href="https://ok2nd.github.io/birds/mizudori.html" target="_blank">(水鳥)</a></p>
 		<p><a href="https://zukan.com/jbirds/community/45" target="_blank">鳥の名前質問</a></p>
-		<p><a href="" target="_blank"></a></p>
+		<p><a href="https://zoopicker.com/animals/" target="_blank">ZooPicker</a></p>
 	</td></tr>
 </table></div>
 <div class="categorybox"><table>
 	<tr class="category"><td>カレンダー</td></tr>
 	<tr class="bookmark"><td>
-		<p><a href="https://lifebear.com/app/calendar" target="_blank">Lifebear (スケジュール)</a></p>
+		<p class="pickup"><a href="https://lifebear.com/app/calendar" target="_blank">Lifebear (スケジュール)</a></p>
 		<p><a href="https://ok2nd.sakura.ne.jp/index/sch/calendar/" target="_blank">年間カレンダー (PHP)</a></p>
 		<p><a href="" target="_blank"></a></p>
 	</td></tr>
@@ -267,6 +267,8 @@ function search_enter(keyCode) {
 	<tr class="category"><td>天気予報</td></tr>
 	<tr class="bookmark"><td>
 		<p><a href="https://www.jma.go.jp/bosai/wdist/" target="_blank">気象庁 天気マップ</a></p>
+		<p><a href="https://tenki.jp/" target="_blank">今日の天気 (tenki.jp)</a></p>
+
 		<p><a href="https://tenki.jp/mountain/" target="_blank">山の天気 (tenki.jp)</a></p>
 		<p><a href="https://tenkura.n-kishou.co.jp/tk/kanko/ka_type.html?type=15" target="_blank">高原・山の天気</a></p>
 		<p><a href="https://www.data.jma.go.jp/gmd/env/kosa/fcst/" target="_blank">黄砂情報 (気象庁)</a></p>
@@ -276,8 +278,8 @@ function search_enter(keyCode) {
 	<tr class="category"><td>ツール</td></tr>
 	<tr class="bookmark"><td>
 		<p><a href="https://www.ginkou.info/tinycontent/tinycontent_id8.html" target="_blank">銀行金利比較</a></p>
-		<p><a href="https://html-css-javascript.com/excel-table-html/" target="_blank">Excel ⇒ HTML Table</a></p>
 		<p><a href="https://sakura-checker.jp/" target="_blank">Amazon サクラチェッカー</a></p>
+		<p><a href="https://html-css-javascript.com/excel-table-html/" target="_blank">Excel ⇒ HTML Table</a></p>
 		<p><a href="https://ok2nd.github.io/iframe/" target="_blank">地図印刷 (大サイズ)</a></p>
 		<p><a href="https://ok2nd.github.io/tool/tategaki/index-js.html" target="_blank">縦書き印刷</a></p>
 		<p><a href="https://ok2nd.github.io/tool/html/colorpicker.html" target="_blank">HTMLカラーチャート </a></p>
