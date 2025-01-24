@@ -129,7 +129,7 @@ function Bing() {
 	wopen(url);
 }
 function MapSch() {
-	url = "http://maps.google.co.jp/maps?q=";
+	url = 'https://www.google.co.jp/maps/search/';
 	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
@@ -139,13 +139,13 @@ function AmazonSch() {
 	wopen(url);
 }
 function YodobashiSch() {
-	url = 'https://www.yodobashi.com/ec/category/index.html?word=';
+	url = 'https://www.yodobashi.com/?word=';
 	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
 function RakutenSch() {
-	url = "http://search.rakuten.co.jp/search/mall/";
-	url += encodeURL(sp2han(document.getElementById('search_str').value)) + "/";
+	url = 'http://search.rakuten.co.jp/search/mall/';
+	url += encodeURL(sp2han(document.getElementById('search_str').value)) + '/';
 	wopen(url);
 }
 function YoutubeSch() {
@@ -159,12 +159,17 @@ function TwitterSch() {
 	wopen(url);
 }
 function WikipediaSch() {
-	url = "https://ja.wikipedia.org/w/index.php?search=";
+	url = 'https://ja.wikipedia.org/wiki/';
 	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
+function GooDictSch() {
+	url = 'https://dictionary.goo.ne.jp/srch/all/';
+	url += encodeURL(sp2han(document.getElementById('search_str').value)) + '/m1u/';
+	wopen(url);
+}
 function DicAlcSch() {
-	url = "http://eow.alc.co.jp/";
+	url = 'http://eow.alc.co.jp/';
 	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
@@ -187,7 +192,7 @@ function search_enter(keyCode) {
 <input type="button" value="Bing" class="btn-blue" onClick="Bing()">
 <input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
 <br>
-<input type="button" value="辞書Alc" class="btn-yellow" onClick="DicAlcSch()">
+<input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
 <input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
 <input type="button" value="Amazon (直)" class="btn-orange" onClick="AmazonSch()">
 <input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
@@ -203,13 +208,14 @@ function search_enter(keyCode) {
 	</td></tr>
 </table></div>
 <div class="categorybox"><table>
-	<tr class="category"><td>点字・翻訳</td></tr>
+	<tr class="category"><td>点字・辞書・翻訳</td></tr>
 	<tr class="bookmark"><td>
 		<p><a href="https://ten-navi.naiiv.net/" target="_blank">点訳ナビゲーター</a></p>
 		<p><a href="https://search.tenyaku.jp/" target="_blank">点訳フォーラム</a></p>
+		<p><a href="https://dictionary.goo.ne.jp/" target="_blank">goo辞書</a></p>
+		<p><a href="https://yourei.jp/" target="_blank">用例.jp</a></p>
 		<p><a href="https://www.deepl.com/ja/translator" target="_blank">DeepL翻訳</a></p>
 		<p><a href="https://miraitranslate.com/trial/" target="_blank">みらい翻訳</a></p>
-		<p><a href="https://yourei.jp/" target="_blank">用例.jp</a></p>
 	</td></tr>
 </table></div>
 <div class="categorybox"><table>
@@ -273,7 +279,6 @@ function search_enter(keyCode) {
 		<p><a href="https://ok2nd.github.io/tool/html/colorpicker.html" target="_blank">HTMLカラーチャート </a></p>
 		<p><a href="" target="_blank"></a></p>
 		<p><a href="" target="_blank"></a></p>
-
 	</td></tr>
 </table></div>
 </div>
