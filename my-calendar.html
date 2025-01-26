@@ -47,10 +47,13 @@ a:active { color: #f43316; background-color: #fff1b7; }
 .pickup a:active { color: #f43316; background-color: #fff1b7; }
 input#search_str {
 	line-height: 24px;
-	height: 24px;
-	padding: 1px 0;
+	height: 30px;
+	padding: 1px 10px;
 	margin-right: 2px;
-	font-size: 20px;
+	font-size: 18px;
+	background-color: #f8f8f8;
+	border-radius: 10px;
+	border: 1px solid #009EDD;
 	width: calc(100% - 64px);
 	max-width: 630px;
 }
@@ -201,13 +204,14 @@ td {
 <input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
 <input type="button" value="Google" class="btn-blue" onClick="GoogleSch()">
 <input type="button" value="Bing" class="btn-blue" onClick="Bing()">
-<br>
+<br><div style="margin-top: 4px;">
 <input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
 <input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
 <input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
 <input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
 <input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
 <input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
+</div>
 </div>
 <div id="container">
 <div class="categorybox"><table>
