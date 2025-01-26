@@ -25,7 +25,13 @@ body, input, select, button, textarea {
 }
 body {
 	padding: 12px;
-	max-width: 800px;
+
+}
+#all_container {
+	display: flex;
+}
+#main_box {
+	max-width: 770px;
 }
 h4 { font-size: 18px; color: #0060c0;}
 a { font-weight: normal; font-size: 14px; }
@@ -33,8 +39,8 @@ a:link { color: #003489; }
 a:visited { color: #003489; }
 a:hover { color: #f43316; background-color: #fff1b7; }
 a:active { color: #f43316; background-color: #fff1b7; }
-.pickup a:link { color: #228b22;  background-color: #fff1b7;}
-.pickup a:visited { color: #228b22;  background-color: #fff1b7;}
+.pickup a:link { color: #228b22; background-color: #fff1b7;}
+.pickup a:visited { color: #228b22; background-color: #fff1b7;}
 .pickup a:hover { color: #f43316; background-color: #fff1b7; }
 .pickup a:active { color: #f43316; background-color: #fff1b7; }
 input#search_str {
@@ -81,11 +87,227 @@ td {
 }
 .bookmark td {
 	padding: 6px 4px 6px 14px;
+	text-align: left;
 }
+/* ----- 以下 カレンダー用 ----- */
+#calendar {
+	display: flex;
+}
+@media (max-width: 960px) {
+	#calendar {
+		display: none;
+	}
+}
+#calendar {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	flex-wrap: wrap;
+	float: left;
+	flex-direction: column;	/* 子要素を縦に */
+}
+#calendar .month {
+	margin: 0px;
+	overflow: hidden;
+	width: 180px;
+}
+#calendar table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#calendar caption {
+	text-align: center;
+	font-weight: bold;
+	padding: 5px;
+}
+#calendar th, td {
+	width: 14.2%;
+	text-align: center;
+	padding: 2px;
+	border: 1px solid #ddd;
+}
+#calendar th {
+	background-color: gray;
+	color: white;
+	font-size: 0.8em;
+}
+#calendar th.sunday {
+	background-color: pink;
+	color: red;
+}
+#calendar th.saturday {
+	background-color: lightblue;
+	color: blue;
+}
+#calendar .sunday {
+	color: red;
+	background-color: #ffe6e6;
+}
+#calendar .saturday {
+	color: blue;
+	background-color: #e6f7ff;
+}
+#calendar .holiday {
+	background-color: #ffdede;
+	color: red;
+}
+#calendar .holidays_name {
+	display: none;
+	position: absolute;
+	margin: -1px 0 0 8px;
+	padding: 5px;
+	color: #f00;
+	background: #fff;
+	border: solid 1px #f00;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	font-size: 0.8em;
+}
+#calendar td.holiday:hover .holidays_name {
+	display: block;
+}
+@media screen {
+	#calendar .today {
+		background-color: #ffdfaf;
+	}
+}
+</style>
 </style>
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="scripts/ok2nd.js"></script>
+<title>My Portal</title>
+</head>
+<body>
+<h4>My Portal　　<a href="http://192.168.1.30/_myhome/index/index.php" target="_blank">MyHome Index (local)</a></h4>
+<div id="all_container">
+<div id="main_box">
+<div id="search_button_box">
+<input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
+<input type="button" value="Google" class="btn-blue" onClick="GoogleSch()">
+<input type="button" value="Bing" class="btn-blue" onClick="Bing()">
+<br>
+<input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
+<input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
+<input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
+<input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
+<input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
+<input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
+</div>
+<div id="container">
+<div class="categorybox"><table>
+	<tr class="category"><td>ブログ</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://2ndart.hatenablog.com/archive" target="_blank">晴歩雨描</a></p>
+		<p class="pickup"><a href="https://ok2nd.github.io/sitemap/hatena-sitemap-table.html" target="_blank">晴歩雨描：記事一覧</a></p>
+		<p><a href="https://ok2nd.github.io/sitemap/photo/" target="_blank">晴歩雨描：スナップ写真</a></p>
+		<p><a href="https://ok2nd.github.io/tool/2nd-art/p1.html" target="_blank">8cmx12cmの小さなアート</a></p>
+		<p><a href="http://192.168.1.30/_myhome/index/index.php" target="_blank">MyHome Index (local)</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>点字・辞書・翻訳</td></tr>
+	<tr class="bookmark"><td>
+		<p class="pickup"><a href="https://ten-navi.naiiv.net/" target="_blank">点訳ナビゲーター</a></p>
+		<p class="pickup"><a href="https://search.tenyaku.jp/" target="_blank">点訳フォーラム</a></p>
+		<p class="pickup"><a href="https://dictionary.goo.ne.jp/" target="_blank">goo辞書</a></p>
+		<p><a href="https://yourei.jp/" target="_blank">用例.jp</a></p>
+		<p><a href="https://www.deepl.com/ja/translator" target="_blank">DeepL翻訳</a></p>
+		<p><a href="https://miraitranslate.com/trial/" target="_blank">みらい翻訳</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>乗換案内</td></tr>
+	<tr class="bookmark"><td>
+		<p class="pickup"><a href="https://transit.yahoo.co.jp/" target="_blank">Yahoo 乗換案内</a></p>
+		<p><a href="https://transit.yahoo.co.jp/diainfo" target="_blank">Yahoo 運行情報</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>おでかけ</td></tr>
+	<tr class="bookmark"><td>
+		<p class="pickup"><a href="https://travel.rakuten.co.jp/" target="_blank">楽天トラベル</a></p>
+		<p class="pickup"><a href="https://ok2nd.github.io/index/mymap/" target="_blank">My 行先マップ</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/-open-list.html" target="_blank">My GPSログ</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/-route-weather.html" target="_blank">My 地図 (leaflet)</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>AI 質問</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></p>
+		<p><a href="https://gemini.google.com/app" target="_blank">Google Gemini</a></p>
+		<p><a href="https://copilot.microsoft.com/" target="_blank">Microsoft Copilot</a></p>
+		<p><a href="https://www.perplexity.ai/" target="_blank">Perplexity</a></p>
+		<p><a href="https://wrtn.jp/" target="_blank">リートン</a></p>
+	</td></tr>
+</table></div>
+
+<div class="categorybox"><table>
+	<tr class="category"><td>カレンダー</td></tr>
+	<tr class="bookmark"><td>
+		<p class="pickup"><a href="https://lifebear.com/app/calendar" target="_blank">Lifebear (スケジュール)</a></p>
+		<p><a href="https://ok2nd.github.io/tool/calendar/year.html" target="_blank">12か月カレンダー</a></p>
+		<p><a href="https://ok2nd.sakura.ne.jp/index/sch/calendar/" target="_blank">12か月カレンダー (PHP)</a></p>
+	</td></tr>
+</table></div>
+
+<div class="categorybox"><table>
+	<tr class="category"><td>ツール</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://www.ginkou.info/tinycontent/tinycontent_id8.html" target="_blank">銀行金利比較</a></p>
+		<p><a href="https://sakura-checker.jp/" target="_blank">Amazon サクラチェッカー</a></p>
+		<p><a href="" target="_blank"></a></p>
+		<p><a href="" target="_blank"></a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>天気予報</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://www.jma.go.jp/bosai/wdist/" target="_blank">気象庁 天気マップ</a></p>
+		<p><a href="https://tenki.jp/" target="_blank">今日の天気 (tenki.jp)</a></p>
+		<p><a href="https://tenki.jp/mountain/" target="_blank">山の天気 (tenki.jp)</a></p>
+		<p><a href="https://tenkura.n-kishou.co.jp/tk/kanko/ka_type.html?type=15" target="_blank">高原・山の天気</a></p>
+		<p><a href="https://www.data.jma.go.jp/gmd/env/kosa/fcst/" target="_blank">黄砂情報 (気象庁)</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>野鳥</td></tr>
+	<tr class="bookmark"><td>
+		<p class="pickup"><a href="https://ok2nd.github.io/birds/" target="_blank">My 野鳥図鑑</a>
+		　<a href="https://ok2nd.github.io/birds/mizudori.html" target="_blank">(水鳥)</a></p>
+		<p><a href="https://zukan.com/jbirds/community/45" target="_blank">鳥の名前質問</a></p>
+		<p><a href="https://zoopicker.com/animals/" target="_blank">ZooPicker</a></p>
+		<p><a href="https://www.google.com/maps/d/embed?mid=1thjkbJ8bsIx6TPlivJDYAnJNv_gNHU0&ehbc=2E312F" target="_blank">ZooPicker探鳥地マップ</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/zoopicker-birding-spot.html" target="_blank">　⇒Leaflet地図</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori.csv&name=シギ・チドリ類調査地点" target="_blank"> シギ・チドリ類調査地点</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori-2023-spring.csv&name=シギ・チドリ類調査地2023春" target="_blank">　⇒調査地点マップ 春</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori-2023-autumn.csv&name=シギ・チドリ類調査地2023秋" target="_blank">　⇒調査地点マップ 秋</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori-2023-winter.csv&name=シギ・チドリ類調査地2023冬" target="_blank">　⇒調査地点マップ 冬</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>ツール (印刷)</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://ok2nd.github.io/iframe/" target="_blank">地図印刷 (大サイズ)</a></p>
+		<p><a href="https://ok2nd.github.io/tool/tategaki/index-js.html" target="_blank">縦書き印刷</a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category"><td>ツール (HTML)</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://html-css-javascript.com/excel-table-html/" target="_blank">Excel ⇒ HTML Table</a></p>
+		<p><a href="https://ok2nd.github.io/tool/html/colorpicker.html" target="_blank">HTMLカラーチャート </a></p>
+		<p><a href="" target="_blank"></a></p>
+		<p><a href="" target="_blank"></a></p>
+	</td></tr>
+</table></div>
+</div>
+</div>
+<div id="calendar">
+</div>
+</div>
 <script>
 $(function() {
 	$('#search_str').autocomplete({
@@ -182,135 +404,83 @@ function search_enter(keyCode) {
 		GoogleSch();
 	}
 }
+// カレンダー
+const urlParams = new URLSearchParams(window.location.search);
+const yearParam = urlParams.get('y');
+const monthParam = urlParams.get('m');
+const today = new Date();
+const startYear = yearParam ? parseInt(yearParam) : today.getFullYear();
+const startMonth = monthParam ? parseInt(monthParam) - 1 : today.getMonth();
+const holidaysApi = "https://holidays-jp.github.io/api/v1/date.json";
+async function fetchHolidays() {
+	const response = await fetch(holidaysApi);
+	return await response.json();
+}
+function generateCalendar(year, month, holidays) {
+	const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+	const daysOfWeek = ["日", "月", "火", "水", "木", "金", "土"];
+	for (let i = 0; i < 3; i++) {
+		const currentMonth = (month + i) % 12;
+		const currentYear = year + Math.floor((month + i) / 12);
+		const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+		const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+		const monthDiv = document.createElement('div');
+		monthDiv.classList.add('month');
+		const table = document.createElement('table');
+		const caption = document.createElement('caption');
+		caption.textContent = `${currentYear}年 ${monthNames[currentMonth]}`;
+		table.appendChild(caption);
+		const thead = document.createElement('thead');
+		const tr = document.createElement('tr');
+		daysOfWeek.forEach((day, index) => {
+			const th = document.createElement('th');
+			th.textContent = day;
+			if (index === 0) th.classList.add('sunday');
+			if (index === 6) th.classList.add('saturday');
+			tr.appendChild(th);
+		});
+		thead.appendChild(tr);
+		table.appendChild(thead);
+		const tbody = document.createElement('tbody');
+		let date = 1;
+		for (let row = 0; row < 6; row++) {
+			const tr = document.createElement('tr');
+			let hasDate = false;
+			for (let col = 0; col < 7; col++) {
+				const td = document.createElement('td');
+				if (row === 0 && col < firstDay || date > daysInMonth) {
+					td.textContent = "";
+				} else {
+					hasDate = true;
+					const currentDate = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
+					td.textContent = date;
+					if (col === 0) td.classList.add('sunday');
+					if (col === 6) td.classList.add('saturday');
+					if (holidays[currentDate]) {
+						td.classList.add('holiday');
+						const holidayName = document.createElement('p');
+						holidayName.classList.add('holidays_name');
+						holidayName.textContent = holidays[currentDate];
+						td.appendChild(holidayName);
+					}
+					if (currentDate === `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`) {
+						td.classList.add('today');
+					}
+					date++;
+				}
+				tr.appendChild(td);
+			}
+			if (hasDate) tbody.appendChild(tr);
+		}
+		table.appendChild(tbody);
+		monthDiv.appendChild(table);
+		const targetDiv = document.getElementById("calendar");
+		targetDiv.appendChild(monthDiv);
+	}
+}
+fetchHolidays().then(holidays => {
+	generateCalendar(startYear, startMonth, holidays);
+});
 </script>
-<title>My Portal</title>
-</head>
-<body>
-<h4>My Portal　　<a href="http://192.168.1.30/_myhome/index/index.php">MyHome Index (local)</a></h4>
-<div id="search_button_box">
-<input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
-<input type="button" value="Google" class="btn-blue" onClick="GoogleSch()">
-<!--
-<input type="button" value="Google (udm=14)" class="btn-blue" onClick="GoogleUdm14()">
--->
-<input type="button" value="Bing" class="btn-blue" onClick="Bing()">
-<br>
-<input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
-<input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
-<input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
-<input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
-<input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
-<input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
-</div>
-<div id="container">
-<div class="categorybox"><table>
-	<tr class="category"><td>ブログ</td></tr>
-	<tr class="bookmark"><td>
-		<p><a href="https://2ndart.hatenablog.com/archive" target="_blank">晴歩雨描</a></p>
-		<p class="pickup"><a href="https://ok2nd.github.io/sitemap/hatena-sitemap-table.html" target="_blank">晴歩雨描：記事一覧</a></p>
-		<p><a href="https://ok2nd.github.io/sitemap/photo/" target="_blank">晴歩雨描：スナップ写真</a></p>
-		<p><a href="https://ok2nd.github.io/tool/2nd-art/p1.html" target="_blank">8cmx12cmの小さなアート</a></p>
-		<p><a href="http://192.168.1.30/_myhome/index/index.php" target="_blank">MyHome Index (local)</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>点字・辞書・翻訳</td></tr>
-	<tr class="bookmark"><td>
-		<p class="pickup"><a href="https://ten-navi.naiiv.net/" target="_blank">点訳ナビゲーター</a></p>
-		<p class="pickup"><a href="https://search.tenyaku.jp/" target="_blank">点訳フォーラム</a></p>
-		<p class="pickup"><a href="https://dictionary.goo.ne.jp/" target="_blank">goo辞書</a></p>
-		<p><a href="https://yourei.jp/" target="_blank">用例.jp</a></p>
-		<p><a href="https://www.deepl.com/ja/translator" target="_blank">DeepL翻訳</a></p>
-		<p><a href="https://miraitranslate.com/trial/" target="_blank">みらい翻訳</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>乗換案内</td></tr>
-	<tr class="bookmark"><td>
-		<p class="pickup"><a href="https://transit.yahoo.co.jp/" target="_blank">Yahoo 乗換案内</a></p>
-		<p><a href="https://transit.yahoo.co.jp/diainfo" target="_blank">Yahoo 運行情報</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>おでかけ</td></tr>
-	<tr class="bookmark"><td>
-		<p class="pickup"><a href="https://travel.rakuten.co.jp/" target="_blank">楽天トラベル</a></p>
-		<p class="pickup"><a href="https://ok2nd.github.io/index/mymap/" target="_blank">My 行先マップ</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/-open-list.html" target="_blank">My GPSログ</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/-route-weather.html" target="_blank">My 地図 (leaflet)</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>AI 質問</td></tr>
-	<tr class="bookmark"><td>
-		<p><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></p>
-		<p><a href="https://gemini.google.com/app" target="_blank">Google Gemini</a></p>
-		<p><a href="https://copilot.microsoft.com/" target="_blank">Microsoft Copilot</a></p>
-		<p><a href="https://www.perplexity.ai/" target="_blank">Perplexity</a></p>
-		<p><a href="https://wrtn.jp/" target="_blank">リートン</a></p>
-	</td></tr>
-</table></div>
-
-<div class="categorybox"><table>
-	<tr class="category"><td>カレンダー</td></tr>
-	<tr class="bookmark"><td>
-		<p class="pickup"><a href="https://lifebear.com/app/calendar" target="_blank">Lifebear (スケジュール)</a></p>
-		<p><a href="https://ok2nd.github.io/tool/calendar/year.html" target="_blank">12か月カレンダー</a></p>
-		<p><a href="https://ok2nd.sakura.ne.jp/index/sch/calendar/" target="_blank">12か月カレンダー (PHP)</a></p>
-	</td></tr>
-</table></div>
-
-<div class="categorybox"><table>
-	<tr class="category"><td>ツール</td></tr>
-	<tr class="bookmark"><td>
-		<p><a href="https://www.ginkou.info/tinycontent/tinycontent_id8.html" target="_blank">銀行金利比較</a></p>
-		<p><a href="https://sakura-checker.jp/" target="_blank">Amazon サクラチェッカー</a></p>
-		<p><a href="" target="_blank"></a></p>
-		<p><a href="" target="_blank"></a></p>
-	</td></tr>
-</table></div>
-
-<div class="categorybox"><table>
-	<tr class="category"><td>天気予報</td></tr>
-	<tr class="bookmark"><td>
-		<p><a href="https://www.jma.go.jp/bosai/wdist/" target="_blank">気象庁 天気マップ</a></p>
-		<p><a href="https://tenki.jp/" target="_blank">今日の天気 (tenki.jp)</a></p>
-		<p><a href="https://tenki.jp/mountain/" target="_blank">山の天気 (tenki.jp)</a></p>
-		<p><a href="https://tenkura.n-kishou.co.jp/tk/kanko/ka_type.html?type=15" target="_blank">高原・山の天気</a></p>
-		<p><a href="https://www.data.jma.go.jp/gmd/env/kosa/fcst/" target="_blank">黄砂情報 (気象庁)</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>野鳥</td></tr>
-	<tr class="bookmark"><td>
-		<p class="pickup"><a href="https://ok2nd.github.io/birds/" target="_blank">My 野鳥図鑑</a>
-		　<a href="https://ok2nd.github.io/birds/mizudori.html" target="_blank">(水鳥)</a></p>
-		<p><a href="https://zukan.com/jbirds/community/45" target="_blank">鳥の名前質問</a></p>
-		<p><a href="https://zoopicker.com/animals/" target="_blank">ZooPicker</a></p>
-		<p><a href="https://www.google.com/maps/d/embed?mid=1thjkbJ8bsIx6TPlivJDYAnJNv_gNHU0&ehbc=2E312F" target="_blank">ZooPicker探鳥地マップ</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/zoopicker-birding-spot.html" target="_blank">　⇒Leaflet地図</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori.csv&name=シギ・チドリ類調査地点" target="_blank"> シギ・チドリ類調査地点</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori-2023-spring.csv&name=シギ・チドリ類調査地2023春" target="_blank">　⇒調査地点マップ 春</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori-2023-autumn.csv&name=シギ・チドリ類調査地2023秋" target="_blank">　⇒調査地点マップ 秋</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/csv2.html?csv=csv/shigi-chidori-2023-winter.csv&name=シギ・チドリ類調査地2023冬" target="_blank">　⇒調査地点マップ 冬</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>ツール (印刷)</td></tr>
-	<tr class="bookmark"><td>
-		<p><a href="https://ok2nd.github.io/iframe/" target="_blank">地図印刷 (大サイズ)</a></p>
-		<p><a href="https://ok2nd.github.io/tool/tategaki/index-js.html" target="_blank">縦書き印刷</a></p>
-	</td></tr>
-</table></div>
-<div class="categorybox"><table>
-	<tr class="category"><td>ツール (HTML)</td></tr>
-	<tr class="bookmark"><td>
-		<p><a href="https://html-css-javascript.com/excel-table-html/" target="_blank">Excel ⇒ HTML Table</a></p>
-		<p><a href="https://ok2nd.github.io/tool/html/colorpicker.html" target="_blank">HTMLカラーチャート </a></p>
-		<p><a href="" target="_blank"></a></p>
-		<p><a href="" target="_blank"></a></p>
-	</td></tr>
-</table></div>
-</div>
 </body>
 </html>
