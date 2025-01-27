@@ -111,12 +111,17 @@ table {
 	padding: 6px 4px 6px 14px;
 	text-align: left;
 }
-.right-box {
+#right-box {
 	display: flex;
 	flex-direction: column;
 }
-@media (max-width: 1160px) {	/* RSSなし: 960px */
-	.right-box {
+@media (max-width: 1200px) {
+	#right-box2 {
+		display: none;
+	}
+}
+@media (max-width: 980px) {
+	#right-box {
 		display: none;
 	}
 }
@@ -399,7 +404,7 @@ table {
 </table></div>
 </div>
 </div>
-<div class="right-box">
+<div id="right-box">
 	<div id="clock-container">
 		<div id="date"></div>
 		<div id="clock"></div>
@@ -411,7 +416,7 @@ table {
 	<div id="calendar">
 	</div>
 </div>
-<div  class="right-box">
+<div id="right-box2">
 	<div id="rss-feeds">
 	</div>
 </div>
