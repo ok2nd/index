@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
 <link rel="shortcut icon" href="favicon/house_yellow.ico" type="image/ico">
 <link rel="icon" href="favicon/house_yellow.ico" type="image/ico">
-<link rel="stylesheet" href="css/button_2.css?20180712">
+<link rel="stylesheet" href="css/button_3.css?20250128">
 <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 <style>
 body, div, img, ul, ol, li, p, th, td, form, pre, dl, dt, dd, fieldset, blockquote, caption, h1, h2, h3, h4, h5, h6 {
@@ -37,8 +37,12 @@ body {
 	display: flex;
 }
 #main_box {
-	max-width: 770px;
+	max-width: 760px;
 }
+.search_button_box {
+	line-height: 32px;
+}
+
 #mytitle { font-size: 18px; color: #0060c0; font-weight: bold; }
 .mytitle_right {
 	margin-left: 20px;
@@ -67,7 +71,7 @@ input#search_str {
 	border-radius: 10px;
 	border: 1px solid #009edd;
 	width: calc(100% - 64px);
-	max-width: 630px;
+	max-width: 635px;
 }
 select, input, textarea, button { 
 	vertical-align: middle;	/* input 要素の縦ずれを防ぐ */
@@ -115,12 +119,12 @@ table {
 	display: flex;
 	flex-direction: column;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1140px) {
 	#right-box2 {
 		display: none;
 	}
 }
-@media (max-width: 980px) {
+@media (max-width: 960px) {
 	#right-box {
 		display: none;
 	}
@@ -250,8 +254,7 @@ table {
 	color: #fff;
 	margin: 0 0 5px 12px;
 	padding: 5px;
-	font-size: 1em;
-	
+	font-size: 0.9em;
 }
 #feeds-title a:link { color: #fff; text-decoration: none; }
 #feeds-title a:visited { color: #fff; text-decoration: none; }
@@ -293,18 +296,16 @@ table {
 </div>
 <div id="all-container">
 <div id="main_box">
-<div id="search_button_box">
+<div class="search_button_box">
 <input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
 <input type="button" value="Google" class="btn-blue" onClick="GoogleSch()">
 <input type="button" value="Bing" class="btn-blue" onClick="Bing()">
-<br><div style="margin-top: 4px;">
 <input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
 <input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
 <input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
 <input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
 <input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
 <input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
-</div>
 </div>
 <div id="container">
 <div class="categorybox"><table>

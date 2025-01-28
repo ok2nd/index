@@ -1,0 +1,85 @@
+/* by http://kubeframework.com/buttons/	*/
+/* Normalize buttons in IE */
+button {
+	width: auto;
+	overflow: visible;
+}
+button, input[type=button], input[type=reset], input[type=submit] {
+	margin: 0;
+	padding: 5px 3px;
+	font-size: 14px;
+	color: #000;
+	cursor: pointer;
+	outline: none;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 4px;
+	background-color: #f3f3f3;
+	background-image: -moz-linear-gradient(top, #ffffff, #e1e1e1);
+	background-image: -ms-linear-gradient(top, #ffffff, #e1e1e1);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e1e1e1));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e1e1e1);
+	background-image: -o-linear-gradient(top, #ffffff, #e1e1e1);
+	background-image: linear-gradient(top, #ffffff, #e1e1e1);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e1e1e1', GradientType=0);
+	border: 1px solid #dadada;
+	border-left: 1px solid #d2d2d2;
+	border-right: 1px solid #d2d2d2;
+	border-bottom-color: #a9a9a9;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15), inset 0 1px 1px 0 rgba(255, 255, 255, 0.6);
+	text-shadow: 0 1px 0px #ffffff;
+}
+@-moz-document url-prefix() {	/* Firefox */
+	button, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"] {
+		padding: 0;
+		height: 1.6em;
+	}
+}
+#index_search input[type=button] {	/* IE */
+	padding: 2px 3px\9;
+}
+.search_button_box .btn-yellow {
+	background-image: -moz-linear-gradient(top, #ffffe0, #ffff56);
+	background-image: -ms-linear-gradient(top, #ffffe0, #ffff56);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffe0), to(#ffff56));
+	background-image: -webkit-linear-gradient(top, #ffffe0, #ffff56);
+	background-image: -o-linear-gradient(top, #ffffe0, #ffff56);
+	background-image: linear-gradient(top, #ffffe0, #ffff56);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffe0', endColorstr='#ffff56', GradientType=0);
+}
+.search_button_box .btn-blue {
+	background-image: -moz-linear-gradient(top, #e0f7ff, #c4f1ff);
+	background-image: -ms-linear-gradient(top, #e0f7ff, #c4f1ff);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e0f7ff), to(#c4f1ff));
+	background-image: -webkit-linear-gradient(top, #e0f7ff, #c4f1ff);
+	background-image: -o-linear-gradient(top, #e0f7ff, #c4f1ff);
+	background-image: linear-gradient(top, #e0f7ff, #c4f1ff);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e0f7ff', endColorstr='#c4f1ff', GradientType=0);
+}
+.search_button_box .btn-orange {
+	background-image: -moz-linear-gradient(top, #ffe7c9, #ffd7a0);
+	background-image: -ms-linear-gradient(top, #ffe7c9, #ffd7a0);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffe7c9), to(#ffd7a0));
+	background-image: -webkit-linear-gradient(top, #ffe7c9, #ffd7a0);
+	background-image: -o-linear-gradient(top, #ffe7c9, #ffd7a0);
+	background-image: linear-gradient(top, #ffe7c9, #ffd7a0);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe7c9', endColorstr='#ffd7a0', GradientType=0);
+}
+.search_button_box .btn-green {
+	background-image: -moz-linear-gradient(top, #d0f2d0, #a8f4a8);
+	background-image: -ms-linear-gradient(top, #d0f2d0, #a8f4a8);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d0f2d0), to(#a8f4a8));
+	background-image: -webkit-linear-gradient(top, #d0f2d0, #a8f4a8);
+	background-image: -o-linear-gradient(top, #d0f2d0, #a8f4a8);
+	background-image: linear-gradient(top, #d0f2d0, #a8f4a8);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0f2d0', endColorstr='#a8f4a8', GradientType=0);
+}
+.search_button_box .btn-pink {
+	background-image: -moz-linear-gradient(top, #ffe2eb, #ffccdc);
+	background-image: -ms-linear-gradient(top, #ffe2eb, #ffccdc);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffe2eb), to(#ffccdc));
+	background-image: -webkit-linear-gradient(top, #ffe2eb, #ffccdc);
+	background-image: -o-linear-gradient(top, #ffe2eb, #ffccdc);
+	background-image: linear-gradient(top, #ffe2eb, #ffccdc);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe2eb', endColorstr='#ffccdc', GradientType=0);
+}
