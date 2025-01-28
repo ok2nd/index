@@ -244,6 +244,19 @@ table {
 	font-weight: bold;
 }
 /* ----- 以下 RSS用 ----- */
+#feeds-title {
+	text-align: center;
+	background-color: #0000CD;
+	color: #fff;
+	margin: 0 10px 5px 12px;
+	padding: 5px;
+	font-size: 1em;
+	
+}
+#feeds-title a:link { color: #fff; text-decoration: none; }
+#feeds-title a:visited { color: #fff; text-decoration: none; }
+#feeds-title a:hover { color: #f43316; background-color: #fff1b7; }
+#feeds-title a:active { color: #f43316; background-color: #fff1b7; }
 #rss-feeds {
 	width: 200px;
 }
@@ -417,6 +430,7 @@ table {
 	</div>
 </div>
 <div id="right-box2">
+	<p id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></p>
 	<div id="rss-feeds">
 	</div>
 </div>
@@ -634,8 +648,8 @@ function updateClock() {
 	document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 	document.getElementById('date').textContent = `${year}年${month}月${day}日 (${dayOfWeek})`;
 }
-// const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss'; // ここにRSSフィードのURLを入力してください
-const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry'; // ここにRSSフィードのURLを入力してください
+const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss'; // ここにRSSフィードのURLを入力してください
+// const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry'; // ここにRSSフィードのURLを入力してください
 async function fetchRSS() {
 	const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`);
 	const data = await response.json();
