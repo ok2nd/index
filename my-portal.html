@@ -6,6 +6,7 @@
 <meta name="author" content="ok.2nd">
 <meta name="description" content="Myポータル">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<!-- RSS 廃止 (api.rss2json.com では最新のデータが得られないので)-->
 <link rel="shortcut icon" href="favicon/house_yellow.ico" type="image/ico">
 <link rel="icon" href="favicon/house_yellow.ico" type="image/ico">
 <link rel="stylesheet" href="css/button_3.css?20250128">
@@ -438,11 +439,13 @@ table {
 	<div id="calendar">
 	</div>
 </div>
+<!--
 <div id="right-box2">
 	<p id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></p>
 	<div id="rss-feeds">
 	</div>
 </div>
+-->
 </div>
 <script>
 $(function() {
@@ -467,7 +470,7 @@ $(function() {
 //	updateClockText();
 	setInterval(updateClock, 1000);
 	updateClock();
-	fetchRSS();
+//	fetchRSS();
 });
 function wopen(url) {
 	w01 = window.open(url,'','');		// 新しいウインドウで開く
@@ -674,10 +677,12 @@ function displayFeeds(feeds) {
 		feedsContainer.appendChild(feedElement);
 	});
 }
+/*
 document.addEventListener('DOMContentLoaded', async () => {
 	const feeds = await fetchRSS();
 	displayFeeds(feeds);
 });
+*/
 </script>
 </body>
 </html>
