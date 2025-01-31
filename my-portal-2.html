@@ -42,7 +42,6 @@ body {
 .search_button_box {
 	line-height: 32px;
 }
-
 #mytitle { font-size: 18px; color: #0060c0; font-weight: bold; }
 .mytitle_right {
 	margin-left: 20px;
@@ -147,7 +146,6 @@ table {
 	font-weight: bold;
 	letter-spacing: 2px;
 }
-
 @media (max-width: 600px) {
 	#date {
 		font-size: 24px;
@@ -407,8 +405,6 @@ table {
 		<p><a href="https://ok2nd.github.io/tool/tategaki/index-js.html" target="_blank">縦書き印刷</a></p>
 	</td></tr>
 </table></div>
-
-
 <div class="categorybox"><table>
 	<tr class="category"><td>ツール (HTML)</td></tr>
 	<tr class="bookmark"><td>
@@ -418,7 +414,6 @@ table {
 		<p><a href="" target="_blank"></a></p>
 	</td></tr>
 </table></div>
-
 <div class="categorybox"><table>
 	<tr class="category green"><td>地図</td></tr>
 	<tr class="bookmark"><td>
@@ -429,7 +424,6 @@ table {
 		<p><a href="https://ok2nd.github.io/leaflet/world-heritage/map.html" target="_blank">世界遺産マップ</a></p>
 	</td></tr>
 </table></div>
-
 </div>
 </div>
 <div id="right-box">
@@ -449,7 +443,6 @@ table {
 	<div id="rss-feeds">
 	</div>
 </div>
-
 </div>
 <script>
 $(function() {
@@ -474,7 +467,6 @@ $(function() {
 //	updateClockText();
 	setInterval(updateClock, 1000);
 	updateClock();
-
 	fetchRSS();
 });
 function wopen(url) {
@@ -663,53 +655,41 @@ function updateClock() {
 	document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 	document.getElementById('date').textContent = `${year}年${month}月${day}日 (${dayOfWeek})`;
 }
-const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss'; // ここにRSSフィードのURLを入力してください
-// const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry'; // ここにRSSフィードのURLを入力してください
-
-
-
+// const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss';
+// const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry';
+function getAlternateRSSUrl() {
+	const urls = [
+		'https://b.hatena.ne.jp/hotentry.rss',
+		'https://feeds.feedburner.com/hatena/b/hotentry'
+	];
+	// 前回使用したURLを取得
+	let lastIndex = localStorage.getItem("rssUrlIndex") || "0";
+	let newIndex = (parseInt(lastIndex) + 1) % urls.length; // 交互に切り替える
+	localStorage.setItem("rssUrlIndex", newIndex); // 次回用に保存
+	return urls[newIndex];
+}
+const rssUrl = getAlternateRSSUrl();
 async function fetchRSS() {
-    const response = await fetch(rssUrl);
-    const text = await response.text();
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(text, "application/xml");
-    
-    const items = xmlDoc.querySelectorAll("item");
-    let feeds = [];
-    
-    items.forEach(item => {
-        feeds.push({
-            title: item.querySelector("title").textContent,
-            link: item.querySelector("link").textContent,
-            pubDate: item.querySelector("pubDate").textContent
-        });
-    });
-
-    return feeds;
+	const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`);
+	const data = await response.json();
+	return data.items;
 }
-
 function displayFeeds(feeds) {
-    const feedsContainer = document.getElementById('rss-feeds');
-    feedsContainer.innerHTML = ""; // 一度クリア
-
-    feeds.forEach(feed => {
-        const feedElement = document.createElement('ul');
-        feedElement.className = 'feed';
-        feedElement.innerHTML = `
-            <li><a href="${feed.link}" target="_blank">${feed.title}</a>
-            <span class="feeds-time">(${new Date(feed.pubDate).toLocaleString()})</span></li>
-        `;
-        feedsContainer.appendChild(feedElement);
-    });
+	const feedsContainer = document.getElementById('rss-feeds');
+	feeds.forEach(feed => {
+		const feedElement = document.createElement('ul');
+		feedElement.className = 'feed';
+		feedElement.innerHTML = `
+			<li><a href="${feed.link}" target="_blank">${feed.title}</a>
+			<span class="feeds-time">(${feed.pubDate})</span></li>
+		`;
+		feedsContainer.appendChild(feedElement);
+	});
 }
-
 document.addEventListener('DOMContentLoaded', async () => {
-    const feeds = await fetchRSS();
-    displayFeeds(feeds);
+	const feeds = await fetchRSS();
+	displayFeeds(feeds);
 });
-
-
-
 </script>
 </body>
 </html>
