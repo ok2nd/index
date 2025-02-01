@@ -254,6 +254,7 @@ table {
 	margin: 0 0 5px 12px;
 	padding: 5px;
 	font-size: 0.9em;
+	display: none;
 }
 #feeds-title a:link { color: #fff; text-decoration: none; }
 #feeds-title a:visited { color: #fff; text-decoration: none; }
@@ -441,7 +442,7 @@ table {
 	</div>
 </div>
 <div id="right-box2">
-	<p id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></p>
+	<div id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></div>
 	<div id="rss-feeds"></div>
 </div>
 </div>
@@ -694,6 +695,7 @@ function displayFeeds(feeds) {
 }
 const params = new URLSearchParams(window.location.search);
 if (params.get("rss") === "y") {
+	document.getElementById("feeds-title").style.display = "block";
 	document.addEventListener('DOMContentLoaded', async () => {
 		const feeds = await fetchRSS();
 		displayFeeds(feeds);
