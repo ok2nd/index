@@ -119,7 +119,7 @@ table {
 	display: flex;
 	flex-direction: column;
 }
-@media (max-width: 1140px) {
+@media (max-width: 1160px) {
 	#right-box2 {
 		display: none;
 	}
@@ -254,6 +254,7 @@ table {
 	margin: 0 0 5px 12px;
 	padding: 5px;
 	font-size: 0.9em;
+	display: none;
 }
 #feeds-title a:link { color: #fff; text-decoration: none; }
 #feeds-title a:visited { color: #fff; text-decoration: none; }
@@ -291,7 +292,6 @@ table {
 	<span id="mytitle">My Portal</span>
 	<span class="mytitle_right"><a href="http://192.168.1.30/_myhome/index/index.php" target="_blank">MyHome Index (★Ma-PC)</a></span>
 	<span class="mytitle_right" id="title_date"></span>
-	<!-- <span id="text-clock"></span> -->
 </div>
 <div id="all-container">
 <div id="main_box">
@@ -440,13 +440,10 @@ table {
 	<div id="calendar">
 	</div>
 </div>
-<!--
 <div id="right-box2">
-	<p id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></p>
-	<div id="rss-feeds">
-	</div>
+	<div id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></div>
+	<div id="rss-feeds"></div>
 </div>
--->
 </div>
 <script>
 $(function() {
@@ -471,7 +468,6 @@ $(function() {
 //	updateClockText();
 	setInterval(updateClock, 1000);
 	updateClock();
-//	fetchRSS();
 });
 function wopen(url) {
 	w01 = window.open(url,'','');		// 新しいウインドウで開く
@@ -659,31 +655,50 @@ function updateClock() {
 	document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 	document.getElementById('date').textContent = `${year}年${month}月${day}日 (${dayOfWeek})`;
 }
-const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss'; // ここにRSSフィードのURLを入力してください
-// const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry'; // ここにRSSフィードのURLを入力してください
+// const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss';
+const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry';
 async function fetchRSS() {
-	const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`);
+	const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
 	const data = await response.json();
-	return data.items;
+	const parser = new DOMParser();
+	const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+	// RSSフィードをパース
+	const items = xmlDoc.querySelectorAll("item");
+	let feeds = [];
+	items.forEach(item => {
+		const title = item.querySelector("title")?.textContent || "No Title";
+		const link = item.querySelector("link")?.textContent || "#";
+		// pubDate の取得（dc:date も考慮）⇒ 結局、どちらの日付も取得できず。
+		let pubDate = item.querySelector("pubDate")?.textContent || item.querySelector("dc\\:date")?.textContent || "";
+		feeds.push({ title, link, pubDate });
+	});
+	return feeds;
 }
 function displayFeeds(feeds) {
 	const feedsContainer = document.getElementById('rss-feeds');
 	feeds.forEach(feed => {
 		const feedElement = document.createElement('ul');
 		feedElement.className = 'feed';
+/*
 		feedElement.innerHTML = `
 			<li><a href="${feed.link}" target="_blank">${feed.title}</a>
-			<span class="feeds-time">(${feed.pubDate})</span></li>
+			(${feed.pubDate})</li>
+		`;
+*/
+		feedElement.innerHTML = `
+			<li><a href="${feed.link}" target="_blank">${feed.title}</a></li>
 		`;
 		feedsContainer.appendChild(feedElement);
 	});
 }
-/*
-document.addEventListener('DOMContentLoaded', async () => {
-	const feeds = await fetchRSS();
-	displayFeeds(feeds);
-});
-*/
+const params = new URLSearchParams(window.location.search);
+if (params.get("rss") === "y") {
+	document.getElementById("feeds-title").style.display = "block";
+	document.addEventListener('DOMContentLoaded', async () => {
+		const feeds = await fetchRSS();
+		displayFeeds(feeds);
+	});
+}
 </script>
 </body>
 </html>

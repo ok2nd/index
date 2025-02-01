@@ -6,9 +6,10 @@
 <meta name="author" content="ok.2nd">
 <meta name="description" content="Myポータル">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<!-- RSS 廃止 (api.rss2json.com では最新のデータが得られないので)-->
 <link rel="shortcut icon" href="favicon/house_yellow.ico" type="image/ico">
 <link rel="icon" href="favicon/house_yellow.ico" type="image/ico">
-<link rel="stylesheet" href="css/button_2.css?20180712">
+<link rel="stylesheet" href="css/button_3.css?20250128">
 <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 <style>
 body, div, img, ul, ol, li, p, th, td, form, pre, dl, dt, dd, fieldset, blockquote, caption, h1, h2, h3, h4, h5, h6 {
@@ -17,7 +18,10 @@ body, div, img, ul, ol, li, p, th, td, form, pre, dl, dt, dd, fieldset, blockquo
 }
 input, select, textarea { margin: 0; }
 img { border: 0; }
-* {
+#top-box {
+	font-family: Arial, sans-serif;
+}
+#all-container {
 	font-family: Arial, sans-serif;
 /*
 	font-family: "MS PGothic", "Osaka", Arial, sans-serif;
@@ -30,11 +34,14 @@ body, input, select, button, textarea {
 body {
 	padding: 12px;
 }
-#all_container {
+#all-container {
 	display: flex;
 }
 #main_box {
-	max-width: 770px;
+	max-width: 760px;
+}
+.search_button_box {
+	line-height: 32px;
 }
 #mytitle { font-size: 18px; color: #0060c0; font-weight: bold; }
 .mytitle_right {
@@ -64,7 +71,7 @@ input#search_str {
 	border-radius: 10px;
 	border: 1px solid #009edd;
 	width: calc(100% - 64px);
-	max-width: 630px;
+	max-width: 635px;
 }
 select, input, textarea, button { 
 	vertical-align: middle;	/* input 要素の縦ずれを防ぐ */
@@ -92,7 +99,7 @@ table {
 .michiyo {
 	background-color: #FF77BB !important;
 }
-.tenki {
+.green {
 	background-color: #008000 !important;
 }
 .bookmark {
@@ -111,6 +118,11 @@ table {
 #right-box {
 	display: flex;
 	flex-direction: column;
+}
+@media (max-width: 1140px) {
+	#right-box2 {
+		display: none;
+	}
 }
 @media (max-width: 960px) {
 	#right-box {
@@ -135,7 +147,6 @@ table {
 	font-weight: bold;
 	letter-spacing: 2px;
 }
-
 @media (max-width: 600px) {
 	#date {
 		font-size: 24px;
@@ -147,6 +158,7 @@ table {
 /* ----- 以下 アナログ時計用 ----- */
 #analog-clock {
 	margin: 12px 0 -34px 10px;
+	height: 198px;
 }
 #analog-clock a:hover { background-color: transparent; }
 #analog-clock a:active { background-color: transparent; }
@@ -234,6 +246,39 @@ table {
 	color: red;
 	font-weight: bold;
 }
+/* ----- 以下 RSS用 ----- */
+#feeds-title {
+	text-align: center;
+	background-color: #0000CD;
+	color: #fff;
+	margin: 0 0 5px 12px;
+	padding: 5px;
+	font-size: 0.9em;
+}
+#feeds-title a:link { color: #fff; text-decoration: none; }
+#feeds-title a:visited { color: #fff; text-decoration: none; }
+#feeds-title a:hover { color: #f43316; background-color: #fff1b7; }
+#feeds-title a:active { color: #f43316; background-color: #fff1b7; }
+#rss-feeds {
+	width: 180px;
+}
+#rss-feeds ul {
+	margin: 0 0 0 28px;
+	padding: 0;
+	list-style: none;
+	list-style-image:url('img/044.gif');
+}
+#rss-feeds li {
+	font-family: 'MS PGothic', 'Osaka', Arial, sans-serif;
+	margin: 2px 0 2px 0;
+	font-size: 0.9em;
+}
+#rss-feeds a:link { color: #0000CD; }
+#rss-feeds a:visited { color: #0000CD; }
+.feeds-time {
+	color: #CE9044;
+	font-size: 0.8em;
+}
 </style>
 </style>
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -242,26 +287,24 @@ table {
 <title>My Portal</title>
 </head>
 <body>
-<p>
+<div id="top-box">
 	<span id="mytitle">My Portal</span>
 	<span class="mytitle_right"><a href="http://192.168.1.30/_myhome/index/index.php" target="_blank">MyHome Index (★Ma-PC)</a></span>
 	<span class="mytitle_right" id="title_date"></span>
 	<!-- <span id="text-clock"></span> -->
-</p>
-<div id="all_container">
+</div>
+<div id="all-container">
 <div id="main_box">
-<div id="search_button_box">
+<div class="search_button_box">
 <input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
 <input type="button" value="Google" class="btn-blue" onClick="GoogleSch()">
 <input type="button" value="Bing" class="btn-blue" onClick="Bing()">
-<br><div style="margin-top: 4px;">
 <input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
 <input type="button" value="goo辞書" class="btn-yellow" onClick="GooDictSch()">
 <input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
 <input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
 <input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
 <input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
-</div>
 </div>
 <div id="container">
 <div class="categorybox"><table>
@@ -299,7 +342,6 @@ table {
 		<p class="pickup"><a href="https://travel.rakuten.co.jp/" target="_blank">楽天トラベル</a></p>
 		<p class="pickup"><a href="https://ok2nd.github.io/index/mymap/" target="_blank">My 行先マップ</a></p>
 		<p class="pickup"><a href="https://ok2nd.github.io/leaflet/-open-list.html" target="_blank">My GPSログ</a></p>
-		<p><a href="https://ok2nd.github.io/leaflet/-route-weather.html" target="_blank">My 地図 (leaflet)</a></p>
 	</td></tr>
 </table></div>
 <div class="categorybox"><table>
@@ -324,13 +366,14 @@ table {
 	<tr class="category"><td>ツール</td></tr>
 	<tr class="bookmark"><td>
 		<p><a href="https://www.ginkou.info/tinycontent/tinycontent_id8.html" target="_blank">銀行金利比較</a></p>
+		<p><a href="https://ok2nd.github.io/tool/calculator/dentaku.html" target="_blank">簡易電卓（数式エディタ）</a></p>
 		<p><a href="https://sakura-checker.jp/" target="_blank">Amazon サクラチェッカー</a></p>
 		<p><a href="" target="_blank"></a></p>
 		<p><a href="" target="_blank"></a></p>
 	</td></tr>
 </table></div>
 <div class="categorybox"><table>
-	<tr class="category tenki"><td>天気予報</td></tr>
+	<tr class="category green"><td>天気予報</td></tr>
 	<tr class="bookmark"><td>
 		<p><a href="https://www.jma.go.jp/bosai/wdist/" target="_blank">気象庁 天気マップ</a></p>
 		<p><a href="https://www.jma.go.jp/bosai/map.html#4/34.5/137/&contents=forecast" target="_blank">気象庁 週間マップ</a></p>
@@ -366,26 +409,44 @@ table {
 <div class="categorybox"><table>
 	<tr class="category"><td>ツール (HTML)</td></tr>
 	<tr class="bookmark"><td>
-		<p><a href="https://html-css-javascript.com/excel-table-html/" target="_blank">Excel ⇒ HTML Table</a></p>
+		<p><a href="https://ok2nd.github.io/tool/excel2html/table.html" target="_blank">Excel ⇒ HTML&lt;Table&gt;</a></p>
 		<p><a href="https://ok2nd.github.io/tool/html/colorpicker.html" target="_blank">HTMLカラーチャート </a></p>
+		<p><a href="https://ok2nd.github.io/tool/rss/parts-allorigins.win.html" target="_blank">はてな (allorigins)</a></p>
+		<p><a href="https://ok2nd.github.io/tool/rss/parts-rss2json.com.html" target="_blank">はてな (rss2json)</a></p>
 		<p><a href="" target="_blank"></a></p>
-		<p><a href="" target="_blank"></a></p>
+	</td></tr>
+</table></div>
+<div class="categorybox"><table>
+	<tr class="category green"><td>地図</td></tr>
+	<tr class="bookmark"><td>
+		<p><a href="https://ok2nd.github.io/leaflet/-route-weather.html" target="_blank">My 地図 (leaflet)</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/-list.html" target="_blank">Leaflet地図・リスト</a></p>
+		<p><a href="https://ok2nd.github.io/tool/map/map-list.html" target="_blank">Myマップ・リスト</a></p>
+		<p><a href="https://www.google.com/maps/d/embed?mid=1UoX_-xbMXEhwdNTscsVtfKBT3xn0-0Jv&ehbc=2E312F" target="_blank">海外旅行行先マップ</a></p>
+		<p><a href="https://ok2nd.github.io/leaflet/world-heritage/map.html" target="_blank">世界遺産マップ</a></p>
 	</td></tr>
 </table></div>
 </div>
 </div>
 <div id="right-box">
-<div id="clock-container">
-	<div id="date"></div>
-	<div id="clock"></div>
+	<div id="clock-container">
+		<div id="date"></div>
+		<div id="clock"></div>
+	</div>
+	<div id="analog-clock">
+	<script src="https://cdn.logwork.com/widget/clock.js"></script>
+	<a href="https://logwork.com/current-time-in-tokyo-japan" class="clock-time" data-style="default-numeral" data-size="160" data-timezone="Asia/Tokyo">&nbsp;</a>
+	</div>
+	<div id="calendar">
+	</div>
 </div>
-<div id="analog-clock">
-<script src="https://cdn.logwork.com/widget/clock.js"></script>
-<a href="https://logwork.com/current-time-in-tokyo-japan" class="clock-time" data-style="default-numeral" data-size="160" data-timezone="Asia/Tokyo">&nbsp;</a>
+<!--
+<div id="right-box2">
+	<p id="feeds-title"><a href="https://b.hatena.ne.jp/" target="_blank">はてなブックマーク</a></p>
+	<div id="rss-feeds">
+	</div>
 </div>
-<div id="calendar">
-</div>
-</div>
+-->
 </div>
 <script>
 $(function() {
@@ -410,6 +471,7 @@ $(function() {
 //	updateClockText();
 	setInterval(updateClock, 1000);
 	updateClock();
+//	fetchRSS();
 });
 function wopen(url) {
 	w01 = window.open(url,'','');		// 新しいウインドウで開く
@@ -583,7 +645,7 @@ function displayDate() {
 		year: 'numeric',
 		era: 'short'
 	}).format(now);
-	document.getElementById('title_date').textContent = dateString + '(' + japaneseEra + ')';
+	document.getElementById('title_date').textContent = dateString + '（' + japaneseEra + '）';
 }
 function updateClock() {
 	const now = new Date();
@@ -597,6 +659,31 @@ function updateClock() {
 	document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
 	document.getElementById('date').textContent = `${year}年${month}月${day}日 (${dayOfWeek})`;
 }
+const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss'; // ここにRSSフィードのURLを入力してください
+// const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry'; // ここにRSSフィードのURLを入力してください
+async function fetchRSS() {
+	const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`);
+	const data = await response.json();
+	return data.items;
+}
+function displayFeeds(feeds) {
+	const feedsContainer = document.getElementById('rss-feeds');
+	feeds.forEach(feed => {
+		const feedElement = document.createElement('ul');
+		feedElement.className = 'feed';
+		feedElement.innerHTML = `
+			<li><a href="${feed.link}" target="_blank">${feed.title}</a>
+			<span class="feeds-time">(${feed.pubDate})</span></li>
+		`;
+		feedsContainer.appendChild(feedElement);
+	});
+}
+/*
+document.addEventListener('DOMContentLoaded', async () => {
+	const feeds = await fetchRSS();
+	displayFeeds(feeds);
+});
+*/
 </script>
 </body>
 </html>
