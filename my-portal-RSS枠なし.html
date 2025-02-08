@@ -247,15 +247,11 @@ table {
 	font-weight: bold;
 }
 /* ----- 以下 RSS用 ----- */
-#right-box2 {
-	margin: 0 0 0 12px;
-}
 #feeds-title {
 	text-align: center;
 	background-color: #0000CD;
 	color: #fff;
-	margin: 0;
-	border: 1px solid Royalblue;
+	margin: 0 0 5px 12px;
 	padding: 4px;
 	font-size: 0.9em;
 	display: none;
@@ -265,14 +261,11 @@ table {
 #feeds-title a:hover { color: #f43316; background-color: #fff1b7; }
 #feeds-title a:active { color: #f43316; background-color: #fff1b7; }
 #rss-feeds {
-	width: 170px;
+	width: 180px;
 	line-height: 14px;
-	border: 1px solid Royalblue;
-	margin: 0;
-	display: none;
 }
 #rss-feeds ul {
-	margin: 0 0 0 22px;
+	margin: 0 0 0 28px;
 	padding: 0;
 	list-style: none;
 	list-style-image:url('img/044.gif');
@@ -283,8 +276,8 @@ table {
 	padding: 2px 0;
 	font-size: 0.9em;
 }
-#rss-feeds a:link { color: #0000cd; }
-#rss-feeds a:visited { color: #0000cd; }
+#rss-feeds a:link { color: #0000CD; }
+#rss-feeds a:visited { color: #0000CD; }
 .feeds-time {
 	color: #ce9044;
 	font-size: 0.8em;
@@ -708,7 +701,6 @@ if (params.get("rss") !== "n") {
 	document.addEventListener('DOMContentLoaded', async () => {
 		const feeds = await fetchRSS();
 		document.getElementById("feeds-title").style.display = "block";
-		document.getElementById("rss-feeds").style.display = "block";
 		displayFeeds(feeds);
 	});
 }
