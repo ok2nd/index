@@ -107,6 +107,10 @@ h3 {
 .kawasemi {
 	color: #FF4500;
 }
+pre {
+	margin: 5px 0 0 40px;
+	background-color: #eee;
+}
 </style>
 </head>
 <body>
@@ -1249,6 +1253,38 @@ function openBirdSearch2() {
 
 <ul id="other"><li><a href="https://ok2nd.github.io/tool/photo/camanjs/upload.html" target="_blank">■ 画像）CamanJS 画像エフェクト</a></li></ul>
 
+
+
+
+<pre>
+o:
+cd O:\Work\work3-magick
+</pre>
+
+<pre>
+mkdir Level1.5
+magick mogrify -path Level1.5 -level 10%,90%,1.5 *.jpg
+</pre>
+
+<pre>
+mkdir Level1.5-G1.3
+magick mogrify -path Level1.5-G1.3 -level 10%,90%,1.5 -gamma 1.3 *.jpg
+</pre>
+
+<pre>
+mkdir Level1.7
+magick mogrify -path Level1.7 -level 10%,90%,1.7 *.jpg
+</pre>
+
+<pre>
+mkdir Level1.7-G1.3
+magick mogrify -path Level1.7-G1.3 -level 10%,90%,1.7 -gamma 1.3 *.jpg
+</pre>
+
+<pre>
+mkdir Level1.9
+magick mogrify -path Level1.9 -level 10%,90%,1.9 *.jpg
+</pre>
 
 </td></tr>
 </table>
