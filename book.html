@@ -1286,6 +1286,28 @@ mkdir Level1.9
 magick mogrify -path Level1.9 -level 10%,90%,1.9 *.jpg
 </pre>
 
+
+
+
+
+<ul id="other"><li>
+
+
+<a href="http://192.168.1.30/2nd_tool/photo-folder/list.html?csv=name-list.csv" target="_blank">■ 写真フォルダー名検索</a> 用</li></ul>
+
+<ul id="other"><li>
+【PowerShell】で、<br>
+<pre>
+o:
+cd \work\work1
+Get-ChildItem -Path "D:\A-Photos" -Directory -Depth 1 | Select-Object -ExpandProperty FullName | ForEach-Object { $_ -replace '\\', '/' } | Out-File -FilePath "O:\Work\work1\name-list.csv" -Encoding UTF8
+</pre>
+
+</li></ul>
+
+
+
+
 </td></tr>
 </table>
 
