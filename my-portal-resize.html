@@ -319,6 +319,7 @@ fetch('-portal-in.html')
 <input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSch()">
 <input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
 <input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
+<input type="button" value="晴歩雨描" class="btn-blue" onClick="MyBlogSch()">
 </div>
 <div id="container">
 </div>
@@ -409,6 +410,11 @@ function YodobashiSch() {
 function RakutenSch() {
 	url = 'http://search.rakuten.co.jp/search/mall/';
 	url += encodeURL(sp2han(document.getElementById('search_str').value)) + '/';
+	wopen(url);
+}
+function MyBlogSch() {
+	url = 'https://ok2nd.github.io/sitemap/hatena-sitemap-table.html?search=';
+	url += encodeURL(sp2han(document.getElementById('search_str').value));
 	wopen(url);
 }
 function YoutubeSch() {
