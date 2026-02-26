@@ -1,0 +1,47 @@
+button,
+input[type=button],
+input[type=reset],
+input[type=submit] {
+    display: inline-grid;
+    align-items: center;       /* êÇíºíÜâõ */
+    width: auto;
+    overflow: visible;
+    margin: 0;
+    padding: 0 10px;
+    height: 28px;
+    font-size: 14px;
+    color: #000;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    background-image: linear-gradient(to bottom, #ffffff, #e1e1e1);
+    border: 1px solid #dadada;
+    border-left: 1px solid #d2d2d2;
+    border-right: 1px solid #d2d2d2;
+    border-bottom-color: #a9a9a9;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.15), inset 0 1px 1px 0 rgba(255,255,255,0.6);
+    text-shadow: 0 1px 0px #ffffff;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    vertical-align: middle;
+    line-height: 1;            /* ÉäÉZÉbÉg */
+}
+.search_button_box .btn-blue {
+    background-image: linear-gradient(to bottom, #e0f7ff, #c4f1ff);
+}
+.search_button_box .btn-yellow {
+    background-image: linear-gradient(to bottom, #ffffe0, #ffff56);
+}
+.search_button_box .btn-orange {
+    background-image: linear-gradient(to bottom, #ffe7c9, #ffd7a0);
+}
+.search_button_box .btn-green {
+    background-image: linear-gradient(to bottom, #d0f2d0, #a8f4a8);
+}
+.search_button_box .btn-pink {
+    background-image: linear-gradient(to bottom, #ffe2eb, #ffccdc);
+}
