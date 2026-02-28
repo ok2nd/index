@@ -9,10 +9,6 @@
 <!-- my-portal.html?rss=n ：RSS（はてなブログ）非表示 -->
 <link rel="shortcut icon" href="favicon/house_yellow.ico" type="image/ico">
 <link rel="icon" href="favicon/house_yellow.ico" type="image/ico">
-
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Murecho:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="css/button_5.css?20260226">
 <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 <style>
@@ -21,13 +17,10 @@ body, div, img, ul, ol, li, p, th, td, form, pre, dl, dt, dd, fieldset, blockquo
 	padding: 0;
 }
 body {
-	font-family: 'Meiryo';
+	font-family: 'Yu Gothic UI';
 }
 input, select, textarea { margin: 0; }
 img { border: 0; }
-#top-box {
-	width: 620px;
-}
 body, input, select, button, textarea {
 	line-height: 1.2;
 }
@@ -71,24 +64,17 @@ input#search_str {
 	font-size: 18px;
 	border-radius: 10px;
 	border: 1px solid #009edd;
-/*	width: calc(100% - 64px);
+	width: calc(100% - 64px);
 	max-width: 620px;
-*/
-	width: 620px;
 }
 select, input, textarea, button { 
 	vertical-align: middle;	/* input 要素の縦ずれを防ぐ */
 }
-/*
 input[type="button"] {
 	padding: 4px 6px;
 }
-*/
-#container {
-/*
+.container {
 	width: 100%;
-*/
-	width: 790px;
 }
 .categorybox {
 	display: inline-block;
@@ -127,18 +113,16 @@ table {
 	display: flex;
 	flex-direction: column;
 }
-/*
-	@media (max-width: 1150px) {
-		#right-box2 {
-			display: none;
-		}
+@media (max-width: 1150px) {
+	#right-box2 {
+		display: none;
 	}
-	@media (max-width: 950px) {
-		#right-box {
-			display: none;
-		}
+}
+@media (max-width: 950px) {
+	#right-box {
+		display: none;
 	}
-*/
+}
 /* ----- 以下 時計用 ----- */
 #clock-container {
 	text-align: center;
@@ -150,23 +134,21 @@ table {
 	padding: 2px;
 }
 #date {
-	font-size: 14px;
+	font-size: 16px;
 }
 #clock {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 2px;
 }
-/*
-	@media (max-width: 600px) {
-		#date {
-			font-size: 24px;
-		}
-		#clock {
-			font-size: 40px;
-		}
+@media (max-width: 600px) {
+	#date {
+		font-size: 24px;
 	}
-*/
+	#clock {
+		font-size: 40px;
+	}
+}
 /* ----- 以下 アナログ時計用 ----- */
 #analog-clock {
 	margin: 12px 0 -34px 10px;
@@ -317,7 +299,7 @@ fetch('-portal-in.html')
 	<span id="mytitle">My Portal</span>
 	<span class="mytitle_right"><a href="http://192.168.1.30/_myhome/index/index.php" target="_blank">MyHome Index (★Ma-PC)</a></span>
 	<span class="mytitle_right" id="title_date"></span>
-	<span><a href="my-portal-resize.html">→リサイズ</a></span>
+	<span><a href="my-portal.html">→リサイズなし</a></span>
 </div>
 <div id="all-container">
 <div id="main_box">
@@ -332,17 +314,6 @@ fetch('-portal-in.html')
 <button type="button" class="btn-orange" onClick="YodobashiSch()">ヨドバシ</button>
 <button type="button" class="btn-orange" onClick="RakutenSch()">楽天</button>
 <button type="button" class="btn-blue" onClick="MyBlogSch()">晴歩雨描</button>
-<!--
-<input type="button" value="Google" class="btn-blue" onClick="GoogleSch()">
-<input type="button" value="Bing" class="btn-blue" onClick="Bing()">
-<input type="button" value="Googleマップ" class="btn-blue" onClick="MapSch()">
-<input type="button" value="Wikipedia" class="btn-yellow" onClick="WikipediaSch()">
-<input type="button" value="Amazon (直販)" class="btn-orange" onClick="AmazonSchDirect()">
-<input type="button" value="Amazon" class="btn-orange" onClick="AmazonSch()">
-<input type="button" value="ヨドバシ" class="btn-orange" onClick="YodobashiSch()">
-<input type="button" value="楽天" class="btn-orange" onClick="RakutenSch()">
-<input type="button" value="晴歩雨描" class="btn-blue" onClick="MyBlogSch()">
--->
 </div>
 <div id="container">
 </div>
