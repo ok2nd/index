@@ -583,8 +583,7 @@ function updateClock() {
 // const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss';
 const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry';
 async function fetchRSS() {
-//	const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
-	const response = await fetch(`https://cool-unit-6d3d.m-ok-2nd.workers.dev/?url=${encodeURIComponent(rssUrl)}`);
+	const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
 	const data = await response.json();
 	const parser = new DOMParser();
 	const xmlDoc = parser.parseFromString(data.contents, "text/xml");
