@@ -17,12 +17,14 @@ body, div, img, ul, ol, li, p, th, td, form, pre, dl, dt, dd, fieldset, blockquo
 	padding: 0;
 }
 body {
-	font-family: 'Meiryo';
+	font-family: 'Yu Gothic UI';
 }
 input, select, textarea { margin: 0; }
 img { border: 0; }
 body, input, select, button, textarea {
 	line-height: 1.2;
+	font-family: inherit;
+	font-size: 1em;
 }
 body {
 	padding: 12px;
@@ -134,10 +136,10 @@ table {
 	padding: 2px;
 }
 #date {
-	font-size: 14px;
+	font-size: 16px;
 }
 #clock {
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: bold;
 	letter-spacing: 2px;
 }
@@ -245,11 +247,11 @@ table {
 }
 #feeds-title {
 	text-align: center;
-	background-color: #0000CD;
+	background-color: #4169E1;
 	color: #fff;
 	margin: 0;
-	border: 1px solid Royalblue;
-	padding: 4px;
+	border: 1px solid #4169E1;
+	padding: 3px;
 	font-size: 0.9em;
 	display: none;
 }
@@ -260,7 +262,7 @@ table {
 #rss-feeds {
 	width: 170px;
 	line-height: 14px;
-	border: 1px solid Royalblue;
+	border: 1px solid #4169E1;
 	margin: 0;
 	display: none;
 }
@@ -558,7 +560,8 @@ function updateClock() {
 // const rssUrl = 'https://b.hatena.ne.jp/hotentry.rss';
 const rssUrl = 'https://feeds.feedburner.com/hatena/b/hotentry';
 async function fetchRSS() {
-	const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
+//	const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
+	const response = await fetch(`https://cool-unit-6d3d.m-ok-2nd.workers.dev/?url=${encodeURIComponent(rssUrl)}`);
 	const data = await response.json();
 	const parser = new DOMParser();
 	const xmlDoc = parser.parseFromString(data.contents, "text/xml");
