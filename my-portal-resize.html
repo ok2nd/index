@@ -67,7 +67,7 @@ input#search_str {
 	border-radius: 10px;
 	border: 1px solid #009edd;
 	width: 100%;	/* calc(100% - 64px); */
-	max-width: 620px;
+	max-width: 610px;
 }
 select, input, textarea, button { 
 	vertical-align: middle;	/* input 要素の縦ずれを防ぐ */
@@ -309,8 +309,10 @@ fetch('-portal-in.html')
 <input type="search" id="search_str" value="" onkeypress="search_enter(event.keyCode);">
 <button type="button" class="btn-blue" onClick="GoogleSch()">Google</button>
 <button type="button" class="btn-blue" onClick="Bing()">Bing</button>
-<button type="button" class="btn-blue" onClick="MapSch()">Googleマップ</button>
+<button type="button" class="btn-yellow" onClick="MapSch()">Googleマップ</button>
+<!--
 <button type="button" class="btn-yellow" onClick="WikipediaSch()">Wikipedia</button>
+-->
 <button type="button" class="btn-orange" onClick="AmazonSchDirect()">Amazon (直販)</button>
 <button type="button" class="btn-orange" onClick="AmazonSch()">Amazon</button>
 <button type="button" class="btn-orange" onClick="YodobashiSch()">ヨドバシ</button>
